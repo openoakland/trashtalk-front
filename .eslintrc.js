@@ -26,6 +26,7 @@ module.exports = {
   // add your custom rules here
   rules: {
     "max-len": [2, 300, 4, {"ignoreUrls": true}],
+    "linebreak-style": 0,
     // don't require .vue extension when importing
     'import/extensions': ['error', 'always', {
       js: 'never',
