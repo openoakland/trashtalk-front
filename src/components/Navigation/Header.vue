@@ -9,7 +9,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
-                        <router-link :to="{path: '/cleanups'}" class="nav-link">All Cleanups</router-link>
+                        <router-link :to="{path: '/cleanups-list'}" class="nav-link">All Cleanups</router-link>
                     </li>
                 </ul>
                 <ul class="navbar-nav">
