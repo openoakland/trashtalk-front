@@ -1,4 +1,5 @@
-<template>
+
+  <template>
 <div class="container">
   <h3>Active Oakland Cleanups</h3>
   <div class="list-group"
@@ -7,31 +8,43 @@
       v-bind:key="cleanup.id">
       <a class='list-group-item list-group-item-action' href='#'>
         <div class='row'>
-          <img class='img-fluid img-thumbnail col-4' :src="'@/assets/' + cleanup.image"/>
+          <img class='img-fluid img-thumbnail col-4' src="http://127.0.0.1:8000/assets/images/crossed_rakes.png"/>
           <div class="col-8 text-left">
             <h4>{{ cleanup.title }}</h4>
             Host: {{ cleanup.host }}<br>
             Date: {{ cleanup.date }}<br>
-            Time: <time>{{ cleanup.event_start }}</time><br>
-            Address: {{ cleanup.address }}
+            Time: <time>{{ cleanup.start_time }}</time><br>
+            Address: {{ cleanup.location.street }}
         </div>
         </div>
       </a>
     </div>
 </div>
-</template>
+  </template>
 
 <script>
+import axios from 'axios';
+
 export default {
-  props: ['cleanups'],
-  name: 'Cleanuplist',
+  name: 'CleanupList',
+
   data() {
     return {
-      cleanupList: [
-        { id: 0, image: 'default_broom.png', title: 'Clean Oakland', host: 'Castello', date: '25-Jan-18', event_start: '12:00pm', address: 'City Hall' },
-        { id: 1, image: 'default_broom.png', title: 'Pickup Trash', host: 'Abbott', date: '27-Jan-18', event_start: '1:00pm', address: 'Jack London Square' },
-      ],
+      cleanupList: {},
     };
+  },
+
+  created() {
+    this.fetchData();
+  },
+
+  methods: {
+    fetchData() {
+      axios.get('http://127.0.0.1:8000/api/v1/cleanups/')
+        .then((resp) => {
+          this.cleanupList = resp.data;
+        });
+    },
   },
 };
 </script>
