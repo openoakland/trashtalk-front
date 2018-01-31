@@ -21,12 +21,26 @@
 </template>
 
 <script>
+import { mapGetters, mapActions } from 'vuex';
+
 export default {
   name: 'Login',
   data() {
     return {
       msg: 'Hello Header',
     };
+  },
+  computed: mapGetters({
+    // Example to get info not needing api call
+    // user: 'userInfo',
+  }),
+  methods: mapActions([
+    // perform login uses api call
+    'login',
+  ]),
+  created() {
+    // example for fetch user info via api call
+    // this.$store.dispatch('getUserInfo');
   },
 };
 </script>
