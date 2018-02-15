@@ -40,7 +40,7 @@ export default {
   ]),
   created() {
     // example for fetch user info via api call
-    // this.$store.dispatch('getUserInfo');
+    this.$store.dispatch('getUserInfo');
   },
 };
 </script>
