@@ -1,4 +1,6 @@
+/* eslint-disable */
 import * as types from '../mutation-types';
+import axios from 'axios';
 
 const state = {
   login: false,
@@ -16,6 +18,8 @@ const actions = {
       name: 'test user',
       email: 'test@test.com',
     };
+
+    //axios.get api call here 
     // fetch api call here and return data
     commit(types.RECEIVE_USER_INFO, user);
   },
